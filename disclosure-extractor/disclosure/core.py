@@ -49,3 +49,12 @@ def metrics(gold, predicted):
 
 def write_jsonl(path, records):
     Path(path).write_text(''.join(json.dumps(r) + '\n' for r in records))
+
+
+def evaluation_report(gold, predicted):
+    report = {'overall': metrics(gold, predicted), 'per_class': {}}
+    for label in sorted(TYPES):
+        def filtered(rows):
+            return [dict(r, entities=[e for e in r['entities'] if e['label'] == label]) for r in rows]
+        report['per_class'][label] = metrics(filtered(gold), filtered(predicted))
+    return report

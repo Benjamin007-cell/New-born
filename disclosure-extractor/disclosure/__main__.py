@@ -1,7 +1,7 @@
 import argparse
 import json
 from pathlib import Path
-from .core import baseline, metrics, read_records, write_jsonl
+from .core import baseline, evaluation_report, read_records, write_jsonl
 
 def main():
     p = argparse.ArgumentParser(description='Extract financial disclosure spans; evaluate exact character boundaries.')
@@ -20,7 +20,7 @@ def main():
             cmd.add_argument('--epochs', type=int, default=3)
     a = p.parse_args()
     if a.command == 'evaluate':
-        print(json.dumps(metrics(read_records(a.gold), read_records(a.predictions)), indent=2))
+        print(json.dumps(evaluation_report(read_records(a.gold), read_records(a.predictions)), indent=2))
     elif a.command == 'pdf':
         from pypdf import PdfReader
         rows = [{'id': '{}:{}'.format(Path(a.input).stem, i+1), 'source_document': Path(a.input).name, 'page': i+1, 'text': page.extract_text() or '', 'entities': []} for i, page in enumerate(PdfReader(a.input).pages)]

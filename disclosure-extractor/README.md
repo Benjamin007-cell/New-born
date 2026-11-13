@@ -33,3 +33,7 @@ Annotate complete disclosure clauses using a written boundary policy; have a sec
 Rule extraction can miss paraphrases and mishandle abbreviations or decimal punctuation. Transformer inference quality depends on annotations and training. No automated investment decisions or factual inference from absent text. Review extracted spans against the filing; preserve provenance and document licensing.
 
 Implementation reference: [Hugging Face token classification](https://huggingface.co/docs/transformers/tasks/token_classification) and [Trainer documentation](https://huggingface.co/docs/transformers/main_classes/trainer).
+
+## Prepare human labels
+
+Follow [the annotation workflow](ANNOTATION.md) to export review worksheets, verify exact span offsets and import reviewed labels. Evaluation reports overall and per-category metrics.
