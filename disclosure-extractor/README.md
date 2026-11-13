@@ -1,8 +1,8 @@
 # Financial Disclosure & Covenant Extractor
 
-A runnable rule baseline plus a PyTorch/Hugging Face token-classification fine-tuning pipeline for debt covenants, FX sensitivity disclosures and audit notes. Accepts text from NGX annual reports and SEC 10-K filings supplied by the user. No real filings, annotated corpus or trained weights are bundled.
+A runnable rule baseline plus a PyTorch/Hugging Face token-classification fine-tuning pipeline for debt covenants, FX sensitivity disclosures and audit notes. Accepts text from NGX annual reports and SEC 10-K filings supplied by the user. The public repository does not bundle filing excerpts or model weights; an experimental trained checkpoint is delivered separately.
 
-**Status:** new implementation. No real-world F1 score is claimed. The proposed 88.4% entity F1 has not been established. Synthetic examples demonstrate interfaces only.
+**Status:** new implementation. No independently validated real-world F1 score is claimed. The proposed 88.4% entity F1 has not been established. Synthetic examples demonstrate interfaces only.
 
 ## Quick demo (Python 3.9+, no dependencies)
 ```sh
@@ -49,7 +49,7 @@ Open the generated HTML locally. Review source context, select clauses, choose c
 
 The trainer now requires `annotation_status: reviewed` in every train/validation record. Importing a completed CSV sets this field; the browser worksheet also sets it when the reviewer checks a record. This is a reviewer attestation, not independent proof of annotation quality.
 
-A 43-record pilot from Dangote Cement's 2024 annual report and Microsoft's 2024 10-K has been prepared locally. [Source manifest and status](data/pilot-manifest.json) are public; report excerpts and worksheets are not included in this repository. There are no human-reviewed real-filing labels or real-filing model weights yet. Two issuers are insufficient for a three-way issuer-disjoint benchmark.
+A 43-record pilot from Dangote Cement's 2024 annual report and Microsoft's 2024 10-K has been prepared locally. [Source manifest and status](data/pilot-manifest.json) are public; report excerpts and worksheets are not included in this repository. There are no independently human-reviewed real-filing labels. Experimental real-filing model weights are delivered separately; see EXPERIMENT.md. Two issuers are insufficient for a three-way issuer-disjoint benchmark.
 
 ## Training integration check
 
@@ -62,3 +62,7 @@ Requires the optional training dependencies. Creates a tiny random BERT and synt
 ## Final validation safeguards
 
 Records reject malformed entities, duplicate IDs, overlapping spans and entity text inconsistent with offsets. When issuer metadata is present, it must appear on every training/validation record and the issuer sets must be disjoint. Training refuses nonempty output directories so existing checkpoints cannot be silently replaced. Use a fresh directory for each training or synthetic integration run.
+
+## Completed experimental training
+
+An eight-epoch DistilBERT fine-tune on AI-annotated real filing excerpts completed. It predicted no validation entities and scored **0.0 exact-span F1** against provisional AI labels. It is not ready for reliable extraction. See [the experiment report](EXPERIMENT.md) for the complete result and limitations. This supersedes earlier notes that no real-filing training had run.

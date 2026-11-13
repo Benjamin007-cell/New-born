@@ -32,5 +32,5 @@
     "prediction_spans": 4,
     "saved_model_reloaded": true
   },
-  "real_filing_training": "not started: requires reviewed annotations and additional independent issuers for held-out evaluation"
+  "real_filing_training": "Completed separately with provisional AI annotations; 8 epochs on 22 training records; final validation 25 records, F1 0.0; see experimental-evaluation.json"
 }
