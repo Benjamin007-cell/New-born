@@ -66,3 +66,7 @@ Records reject malformed entities, duplicate IDs, overlapping spans and entity t
 ## Completed experimental training
 
 An eight-epoch DistilBERT fine-tune on AI-annotated real filing excerpts completed. It predicted no validation entities and scored **0.0 exact-span F1** against provisional AI labels. It is not ready for reliable extraction. See [the experiment report](EXPERIMENT.md) for the complete result and limitations. This supersedes earlier notes that no real-filing training had run.
+
+## Expanded research study
+
+The six-issuer expansion, balanced sampling and class-weighted training are complete. The selected checkpoint scored **23.33% exact-span F1** on 58 MTN Nigeria test records with weak heuristic labels; the prior checkpoint scored 0.0 on that same sample. Validation F1 was 50.60%. These are provisional machine-label results, not human-validated accuracy, and 88.4% has not been achieved. See [results](RESEARCH_RESULT.md) and [reproduction method](RESEARCH.md). The frozen corpus and trained weights are delivered separately.

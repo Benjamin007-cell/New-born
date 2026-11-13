@@ -1,0 +1,81 @@
+{
+  "policy": "silver-sentence-v2",
+  "annotation_quality": "weak rule labels, NOT independent gold",
+  "sources": [
+    {
+      "document": "microsoft-2024",
+      "issuer": "Microsoft",
+      "split": "train",
+      "url": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT_FY24Q4_10K",
+      "sha256": "d2634a95701e31734089f6f8f7e080e1fb3ceb44c7a9e7442bd28744d8ec7ab0"
+    },
+    {
+      "document": "dangote-2024",
+      "issuer": "Dangote-Cement",
+      "split": "train",
+      "url": "https://cement.dangote.com/wp-content/uploads/2025/05/Dangote-Cement-FY-2024-Annual-Report.pdf",
+      "sha256": "112c0ee8425a1dbda81e700a5965ec43cae89d650882ed354d63f6b603300a53"
+    },
+    {
+      "document": "apple-2024",
+      "issuer": "Apple",
+      "split": "train",
+      "url": "https://s2.q4cdn.com/470004039/files/doc_earnings/2024/q4/filing/10-Q4-2024-As-Filed.pdf",
+      "sha256": "319e1217afe72f194575e63350ea6c813eaf5caf0c24e59ce8b221fc1b3ea0d4"
+    },
+    {
+      "document": "gtco-2024",
+      "issuer": "GTCO",
+      "split": "train",
+      "url": "https://gtco-plc.files.svdcdn.com/production/annual-reports/2024-annual-report/2024-Annual-Report-GTCO.pdf",
+      "sha256": "eaa78b30ee6cd48313e95021c918cd51cf517c0a6b3c47010f61bdf6dd2c1eb9"
+    },
+    {
+      "document": "unilever-2024",
+      "issuer": "Unilever",
+      "split": "validation",
+      "url": "https://www.unilever.com/files/unilever-annual-report-and-accounts-2024.pdf",
+      "sha256": "c15d7a38b41d7baef49e78a9db9bbb1deaeec685ec160d1b7478c062eef8d6f2"
+    },
+    {
+      "document": "mtn-ng-2024",
+      "issuer": "MTN-Nigeria",
+      "split": "test",
+      "url": "https://eu-assets.contentstack.com/v3/assets/bltacf39601912ccb86/blte76eb08614ce3f4d/67fd29c8b15db33f19e846f3/MTN_Nigeria_Annual_Report_2024_.pdf",
+      "sha256": "38369cbbd6a86eb94298a13518e2185d3b535ceb136fab7503928d51464944cf"
+    }
+  ],
+  "splits": {
+    "train": {
+      "records": 108,
+      "entities": {
+        "AUDIT_NOTE": 31,
+        "COVENANT": 14,
+        "FX_SENSITIVITY": 9
+      },
+      "negative_records": 54,
+      "sha256": "b85195fa732546aebb4c7a1693324bcfaaeb974b6cfc291cb85c190a56dc38d5"
+    },
+    "validation": {
+      "records": 61,
+      "entities": {
+        "AUDIT_NOTE": 18,
+        "FX_SENSITIVITY": 5,
+        "COVENANT": 1
+      },
+      "negative_records": 37,
+      "sha256": "b76aa4d2966f57624128844d7fef7abf340b7b5807e381e84beda34c9cdf7679"
+    },
+    "test": {
+      "records": 58,
+      "entities": {
+        "COVENANT": 11,
+        "AUDIT_NOTE": 7,
+        "FX_SENSITIVITY": 4
+      },
+      "negative_records": 36,
+      "sha256": "74661ac464a1e7c347ba429109e32203056be993ecad9d7e3a850dc9fb78c6e2"
+    }
+  },
+  "label_refinement": "Selected sentences were relabeled with corrected shock-word boundaries before any final training/test evaluation. Corrections were based on training-only examples."
+}

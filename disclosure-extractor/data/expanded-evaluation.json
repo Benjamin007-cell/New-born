@@ -1,0 +1,59 @@
+{
+  "overall": {
+    "precision": 0.18421052631578946,
+    "recall": 0.3181818181818182,
+    "f1": 0.23333333333333334,
+    "true_positives": 7,
+    "false_positives": 31,
+    "false_negatives": 15,
+    "gold_entities": 22
+  },
+  "per_class": {
+    "AUDIT_NOTE": {
+      "precision": 0.2857142857142857,
+      "recall": 0.8571428571428571,
+      "f1": 0.42857142857142855,
+      "true_positives": 6,
+      "false_positives": 15,
+      "false_negatives": 1,
+      "gold_entities": 7
+    },
+    "COVENANT": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 11,
+      "gold_entities": 11
+    },
+    "FX_SENSITIVITY": {
+      "precision": 0.058823529411764705,
+      "recall": 0.25,
+      "f1": 0.09523809523809523,
+      "true_positives": 1,
+      "false_positives": 16,
+      "false_negatives": 3,
+      "gold_entities": 4
+    }
+  },
+  "annotation_quality": "WEAK RULE LABELS, NOT INDEPENDENT HUMAN GOLD",
+  "test_records": 58,
+  "test_issuers": [
+    "MTN-Nigeria"
+  ],
+  "test_sha256": "74661ac464a1e7c347ba429109e32203056be993ecad9d7e3a850dc9fb78c6e2",
+  "test_used_for_selection": false,
+  "warning": "This measures agreement with a heuristic labeling policy on one held-out issuer, not verified real-world accuracy. It cannot substantiate the original 88.4% claim.",
+  "conditional_record_bootstrap_f1_95_percent": [
+    0.08333333333333333,
+    0.4411764705882353
+  ],
+  "uncertainty_caveat": "Conditional on one issuer and heuristic labels; not an issuer-level or human-gold confidence interval.",
+  "comparison": {
+    "previous_model_same_test_f1": 0.0,
+    "selected_model_test_f1": 0.23333333333333334,
+    "best_validation_f1": 0.5060240963855422,
+    "test_used_for_selection": false
+  }
+}

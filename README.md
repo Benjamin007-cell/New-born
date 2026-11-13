@@ -42,3 +42,7 @@ Read the project guide for optional training dependencies and the annotation pro
 These are research implementations. The replay engine does not model settlement, accrued interest or venue-specific auctions; extraction quality requires dataset-specific annotation and evaluation. Each project documents its limits and includes an MIT license for its code. Third-party filings retain their own rights.
 
 [Automated checks](https://github.com/Benjamin007-cell/New-born/actions)
+
+## Latest experiment
+
+An expanded six-issuer study produced a class-weighted model with 23.33% exact-span F1 on 58 issuer-held-out, weak-labeled records, versus 0.0 for the earlier model on the same sample. The 88.4% target was not reached. See [the full result and limitations](disclosure-extractor/RESEARCH_RESULT.md). The earlier experiment above remains part of the project history.
