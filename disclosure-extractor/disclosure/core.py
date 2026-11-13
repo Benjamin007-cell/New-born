@@ -21,7 +21,7 @@ def read_records(path):
 
 def baseline(text):
     """Transparent sentence-level rules, not a trained transformer."""
-    rules = [('COVENANT', r'\b(covenant|debt.service.coverage|leverage ratio)\b'),
+    rules = [('COVENANT', r'\b(covenants?|debt.service.coverage|leverage ratio)\b'),
              ('FX_SENSITIVITY', r'\b(exchange rate|foreign exchange|currency risk|fx sensitivity)\b'),
              ('AUDIT_NOTE', r'\b(auditor|audit opinion|going concern|key audit matter)\b')]
     out = []

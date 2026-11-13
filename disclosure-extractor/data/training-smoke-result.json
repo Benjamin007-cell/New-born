@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "purpose": "Synthetic integration test, NOT a financial model or benchmark",
+  "train_records": 3,
+  "validation_records": 3,
+  "prediction_spans": 4,
+  "saved_model_reloaded": true
+}

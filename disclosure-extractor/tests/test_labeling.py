@@ -21,6 +21,7 @@ class LabelingTests(unittest.TestCase):
                 writer=csv.DictWriter(f,fieldnames=fields); writer.writeheader();writer.writerows(rows)
             import_sheet(source,sheet,output)
             gold=read_records(output)
+            self.assertEqual(gold[0]['annotation_status'], 'reviewed')
             report=evaluation_report(gold,gold)
             self.assertEqual(report['per_class']['COVENANT']['f1'],1)
             self.assertEqual(report['overall']['gold_entities'],1)

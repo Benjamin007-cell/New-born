@@ -36,6 +36,8 @@ def train(train_path, validation_path, output, base_model, epochs):
     train_rows, val_rows = read_records(train_path), read_records(validation_path)
     if not train_rows or not val_rows or epochs <= 0:
         raise ValueError('Need nonempty train/validation sets and positive epochs')
+    if any(r.get('annotation_status') != 'reviewed' for r in train_rows + val_rows):
+        raise ValueError('Training requires reviewed annotations; import the completed worksheet first')
     # Paragraphs from the same source must remain in the same split.
     if any(not r.get('source_document') for r in train_rows + val_rows):
         raise ValueError('Training records require source_document to prevent document leakage')

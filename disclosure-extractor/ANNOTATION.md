@@ -1,6 +1,6 @@
 # Build the labeled corpus
 
-No real filings or labels are supplied yet. Do not train or publish a benchmark using the demo data.
+A local pilot of real filing excerpts is prepared; no human-reviewed real-filing labels are supplied yet. Do not train or publish a benchmark using the demo data.
 
 ## Collect and prepare
 
@@ -43,3 +43,5 @@ Create train, validation and test JSONL files from reviewed records. Keep all pa
 The existing trainer rejects repeated source documents, IDs and exact texts across train/validation. It cannot detect all related issuers or near-duplicates, so review the manifest manually. Reserve test data separately.
 
 Evaluation now reports exact character-span precision, recall, F1 and counts overall and for each class. A class with no gold entities reports zero F1 and zero gold count; treat this as insufficient evidence, not a measured class failure. Report corpus counts and held-out results alongside any headline F1. The claimed 88.4% is unverified until a real experiment supports it.
+
+Browser alternative: generate `review.html` with `python -m disclosure.review candidates.jsonl review.html`. The exported JSONL contains only records explicitly checked as reviewed.

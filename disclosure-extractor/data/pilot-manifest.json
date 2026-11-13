@@ -1,0 +1,36 @@
+{
+  "prepared_date": "2026-11-13",
+  "records": 43,
+  "annotation_status": "unreviewed",
+  "selection_counts": {
+    "COVENANT": 11,
+    "FX_SENSITIVITY": 12,
+    "AUDIT_NOTE": 8,
+    "NEGATIVE_CANDIDATE": 12
+  },
+  "sources": [
+    {
+      "source_document": "dangote-2024",
+      "issuer": "Dangote-Cement",
+      "url": "https://cement.dangote.com/wp-content/uploads/2025/05/Dangote-Cement-FY-2024-Annual-Report.pdf",
+      "sha256": "112c0ee8425a1dbda81e700a5965ec43cae89d650882ed354d63f6b603300a53",
+      "candidates": 23
+    },
+    {
+      "source_document": "microsoft-2024",
+      "issuer": "Microsoft",
+      "url": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT_FY24Q4_10K",
+      "sha256": "d2634a95701e31734089f6f8f7e080e1fb3ceb44c7a9e7442bd28744d8ec7ab0",
+      "candidates": 20
+    }
+  ],
+  "training_smoke_test": {
+    "status": "passed",
+    "purpose": "Synthetic integration test, NOT a financial model or benchmark",
+    "train_records": 3,
+    "validation_records": 3,
+    "prediction_spans": 4,
+    "saved_model_reloaded": true
+  },
+  "real_filing_training": "not started: requires reviewed annotations and additional independent issuers for held-out evaluation"
+}

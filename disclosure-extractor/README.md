@@ -37,3 +37,24 @@ Implementation reference: [Hugging Face token classification](https://huggingfac
 ## Prepare human labels
 
 Follow [the annotation workflow](ANNOTATION.md) to export review worksheets, verify exact span offsets and import reviewed labels. Evaluation reports overall and per-category metrics.
+
+## Real filing preparation and browser review
+
+```sh
+python -m disclosure.prepare report.pdf candidates.jsonl --document issuer-2024 --issuer Issuer --url https://example.org/report.pdf
+python -m disclosure.review candidates.jsonl review.html
+```
+
+Open the generated HTML locally. Review source context, select clauses, choose categories, remove false suggestions, and mark checked records reviewed. Save checkpoints before closing the page. Exported reviewed JSONL preserves source provenance. The worksheet counts Python Unicode characters even for non-BMP symbols; it does not use raw PDF offsets. Keyword-selected negatives and positives are candidates, not a representative test set. Candidate preparation supports PDF and DOCX (including table-cell paragraphs); extracted table fragments need manual context checks.
+
+The trainer now requires `annotation_status: reviewed` in every train/validation record. Importing a completed CSV sets this field; the browser worksheet also sets it when the reviewer checks a record. This is a reviewer attestation, not independent proof of annotation quality.
+
+A 43-record pilot from Dangote Cement's 2024 annual report and Microsoft's 2024 10-K has been prepared locally. [Source manifest and status](data/pilot-manifest.json) are public; report excerpts and worksheets are not included in this repository. There are no human-reviewed real-filing labels or real-filing model weights yet. Two issuers are insufficient for a three-way issuer-disjoint benchmark.
+
+## Training integration check
+
+```sh
+PYTHONPATH=. python scripts/smoke_training.py /tmp/disclosure-smoke
+```
+
+Requires the optional training dependencies. Creates a tiny random BERT and synthetic fixtures locally without downloading model weights, then trains, saves, reloads and predicts. This passed locally with PyTorch 2.8.0 and Transformers 4.57.6. It verifies the pipeline only; no financial accuracy or useful pretrained model is implied. The generated model is a test artifact and should not be deployed. [Recorded result](data/training-smoke-result.json).

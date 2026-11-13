@@ -3,3 +3,4 @@ transformers>=4.46,<5
 datasets>=3,<4
 accelerate>=1,<2
 pypdf>=5,<7
+fonttools>=4.50,<5

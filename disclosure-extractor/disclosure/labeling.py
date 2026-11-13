@@ -42,7 +42,7 @@ def import_sheet(source, worksheet, output):
                 if 'text' not in e or original['text'][e['start']:e['end']] != e['text']:
                     raise ValueError('Each entity needs exact matching text to verify its offsets')
                 end=e['end']
-            result.append(dict(original, entities=entities))
+            result.append(dict(original, entities=entities, annotation_status="reviewed"))
     if seen != set(by_id):
         raise ValueError('Worksheet must include every source record')
     if Path(output).resolve() in {Path(source).resolve(), Path(worksheet).resolve()}:
