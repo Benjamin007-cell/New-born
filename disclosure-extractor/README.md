@@ -58,3 +58,7 @@ PYTHONPATH=. python scripts/smoke_training.py /tmp/disclosure-smoke
 ```
 
 Requires the optional training dependencies. Creates a tiny random BERT and synthetic fixtures locally without downloading model weights, then trains, saves, reloads and predicts. This passed locally with PyTorch 2.8.0 and Transformers 4.57.6. It verifies the pipeline only; no financial accuracy or useful pretrained model is implied. The generated model is a test artifact and should not be deployed. [Recorded result](data/training-smoke-result.json).
+
+## Final validation safeguards
+
+Records reject malformed entities, duplicate IDs, overlapping spans and entity text inconsistent with offsets. When issuer metadata is present, it must appear on every training/validation record and the issuer sets must be disjoint. Training refuses nonempty output directories so existing checkpoints cannot be silently replaced. Use a fresh directory for each training or synthetic integration run.

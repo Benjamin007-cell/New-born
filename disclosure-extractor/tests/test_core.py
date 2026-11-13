@@ -30,3 +30,16 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(encode_record(row,Tokenizer())['labels'],[-100,1,2,-100])
         row['entities'][0]['start']=1
         with self.assertRaises(ValueError): encode_record(row,Tokenizer())
+
+class ValidationTests(unittest.TestCase):
+    def test_entity_text_must_match(self):
+        from disclosure.core import validate_records
+        row={'id':'a','text':'debt','entities':[{'start':0,'end':4,'label':'COVENANT','text':'cash'}]}
+        with self.assertRaises(ValueError): validate_records([row])
+    def test_duplicate_records_rejected_in_metrics(self):
+        r={'id':'a','text':'debt','entities':[]}
+        with self.assertRaises(ValueError): metrics([r,r],[r])
+    def test_bad_entity_types_rejected(self):
+        from disclosure.core import validate_records
+        for entity in [None, {'start':0,'end':'1','label':'COVENANT'}, {'start':0,'end':1,'label':[]}]:
+            with self.assertRaises(ValueError): validate_records([{'id':'a','text':'x','entities':[entity]}])

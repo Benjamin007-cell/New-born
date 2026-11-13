@@ -47,6 +47,18 @@ def train(train_path, validation_path, output, base_model, epochs):
         raise ValueError('Duplicate IDs across splits')
     if {r['text'] for r in train_rows} & {r['text'] for r in val_rows}:
         raise ValueError('Duplicate text across splits')
+    # When issuer metadata is supplied, enforce issuer-disjoint validation.
+    issuer_values = [r.get('issuer') for r in train_rows + val_rows]
+    if any(issuer_values):
+        if not all(isinstance(v, str) and v.strip() for v in issuer_values):
+            raise ValueError('Issuer metadata must be present in every record when used')
+        if {r['issuer'].strip().casefold() for r in train_rows} & {r['issuer'].strip().casefold() for r in val_rows}:
+            raise ValueError('Issuer leakage across train and validation')
+    output_path = Path(output).resolve()
+    if output_path in {Path(train_path).resolve(), Path(validation_path).resolve(), Path(base_model).resolve()}:
+        raise ValueError('Output must differ from input data and base model')
+    if output_path.exists() and any(output_path.iterdir()):
+        raise ValueError('Training output must be a new or empty directory')
     set_seed(42)
     tokenizer = AutoTokenizer.from_pretrained(base_model, use_fast=True)
     datasets = [Dataset.from_list([encode_record(r, tokenizer) for r in rows]) for rows in [train_rows, val_rows]]
