@@ -1,0 +1,41 @@
+name: Finance projects
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [replay-engine, disclosure-extractor]
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m unittest discover -s tests
+  rust:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: replay-engine
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test
+      - run: cargo run -- < data/events.csv
+  demo:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: disclosure-extractor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m disclosure extract data/demo.jsonl predictions.jsonl
+      - run: python -m disclosure evaluate data/demo.jsonl predictions.jsonl

@@ -1,0 +1,4 @@
+{"id": "demo-1", "source_document": "synthetic-ngx", "text": "The debt covenant requires a leverage ratio below 3.0 times.", "entities": [{"start": 0, "end": 60, "label": "COVENANT"}]}
+{"id": "demo-2", "source_document": "synthetic-10k", "text": "A 10% change in the exchange rate would reduce profit by NGN 20 million.", "entities": [{"start": 0, "end": 72, "label": "FX_SENSITIVITY"}]}
+{"id": "demo-3", "source_document": "synthetic-audit", "text": "The auditor identified revenue recognition as a key audit matter.", "entities": [{"start": 0, "end": 65, "label": "AUDIT_NOTE"}]}
+{"id": "demo-4", "source_document": "synthetic-negative", "text": "The company opened two branches during the reporting year.", "entities": []}

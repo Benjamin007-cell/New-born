@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "financial-disclosure-extractor"
+version = "0.1.0"
+requires-python = ">=3.9"
+description = "Financial disclosure span extraction, training and evaluation"
+[tool.setuptools.packages.find]
+include = ["disclosure*"]

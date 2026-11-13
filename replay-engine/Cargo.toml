@@ -1,0 +1,6 @@
+[package]
+name = "replay-engine"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Deterministic price-time order book replay with integer prices"

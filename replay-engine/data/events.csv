@@ -1,0 +1,7 @@
+timestamp,action,id,side,price,quantity
+1,add,ask1,sell,10000,200
+2,add,ask2,sell,10000,100
+3,add,buy1,buy,10005,250
+4,cancel,ask2,,,
+5,add,bid1,buy,9995,300
+6,add,sell1,sell,9995,100
